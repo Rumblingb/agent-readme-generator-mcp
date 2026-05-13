@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent README Generator MCP</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d29;
+      --accent: #3B82F6;
+      --accent2: #8B5CF6;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 12px auto 24px;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .badges img { height: 20px; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.3); }
+    .btn-outline {
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+    }
+    .btn-outline:hover { background: rgba(59,130,246,0.1); }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    section { padding: 48px 0; }
+    section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .tool-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #2a2d3a;
+    }
+    .tool-card h3 { color: var(--accent); margin-bottom: 8px; font-size: 1.1rem; }
+    .tool-card p { color: var(--muted); font-size: 0.9rem; }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      border: 1px solid #2a2d3a;
+    }
+    .pricing-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+    .pricing-card.featured::before {
+      content: 'Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pricing-card .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 16px 0;
+    }
+    .pricing-card .price span { font-size: 1rem; color: var(--muted); }
+    .pricing-card ul { list-style: none; margin: 20px 0; }
+    .pricing-card li { padding: 6px 0; color: var(--muted); }
+    .pricing-card li::before { content: '✅ '; }
+
+    .config-box {
+      background: #1a1d29;
+      border: 1px solid #2a2d3a;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 16px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="badges">
+        <img src="https://img.shields.io/badge/Smithery-Deployed-3B82F6" alt="Smithery" />
+        <img src="https://img.shields.io/npm/v/agentpay-readme-generator-mcp" alt="npm" />
+        <img src="https://img.shields.io/github/stars/Rumblingb/agent-readme-generator-mcp?style=social" alt="Stars" />
+        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
+      </div>
+      <h1>Agent README Generator MCP</h1>
+      <p>Generate professional README files for any GitHub repo — directly from your MCP client.</p>
+      <div class="hero-buttons">
+        <a href="https://smithery.ai/server/@Rumblingb/agent-readme-generator-mcp" class="btn btn-primary">Install from Smithery</a>
+        <a href="https://github.com/Rumblingb/agent-readme-generator-mcp" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2>Tools</h2>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h3>readme_generate</h3>
+          <p>Generate a complete README from repo name, description, features, and tools. Multiple templates available.</p>
+        </div>
+        <div class="tool-card">
+          <h3>readme_add_badge</h3>
+          <p>Generate markdown for Smithery, npm, GitHub stars, Python, and license badges.</p>
+        </div>
+        <div class="tool-card">
+          <h3>readme_validate</h3>
+          <p>Check any README against a best-practices checklist with scoring.</p>
+        </div>
+        <div class="tool-card">
+          <h3>readme_templates</h3>
+          <p>Browse available templates: Python MCP, REST API, HTML Tool, CLI App, npm Package.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Pricing</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0<span>/mo</span></div>
+          <ul>
+            <li>5 READMEs per session</li>
+            <li>All 4 tools</li>
+            <li>Standard templates</li>
+          </ul>
+          <a href="https://github.com/Rumblingb/agent-readme-generator-mcp" class="btn btn-outline" style="width:100%">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+          <h3>Pro</h3>
+          <div class="price">$9<span>/mo</span></div>
+          <ul>
+            <li>Unlimited READMEs</li>
+            <li>Custom branding</li>
+            <li>All templates</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="__STRIPE_PAYMENT_LINK__" class="btn btn-primary" style="width:100%">Subscribe Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Quick Start</h2>
+      <h3 style="margin-bottom:8px">MCP Configuration</h3>
+      <p style="color:var(--muted);margin-bottom:12px">Add to your <code>claude_desktop_config.json</code></p>
+      <div class="config-box">{
+  "mcpServers": {
+    "readme-generator": {
+      "command": "npx",
+      "args": ["-y", "agentpay-readme-generator-mcp"]
+    }
+  }
+}</div>
+      <div class="hero-buttons">
+        <a href="https://smithery.ai/server/@Rumblingb/agent-readme-generator-mcp" class="btn btn-primary">Install via Smithery</a>
+        <a href="https://www.npmjs.com/package/agentpay-readme-generator-mcp" class="btn btn-outline">npm Package</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Agent README Generator MCP &mdash; Built with &hearts; by <a href="https://github.com/Rumblingb">Rumblingb</a></p>
+      <p><a href="https://github.com/Rumblingb/agent-readme-generator-mcp">GitHub</a> &middot; <a href="https://www.npmjs.com/package/agentpay-readme-generator-mcp">npm</a> &middot; <a href="https://smithery.ai/server/@Rumblingb/agent-readme-generator-mcp">Smithery</a></p>
+    </div>
+  </footer>
+</body>
+</html>

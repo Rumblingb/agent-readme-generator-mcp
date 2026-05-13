@@ -1,0 +1,13 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      freeLimit:
+        type: integer
+        default: 5
+        description: Number of free README generations per session
+    required: []
+  command: python
+  args:
+    - server.py

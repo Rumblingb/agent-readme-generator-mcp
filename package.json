@@ -1,0 +1,41 @@
+{
+  "name": "agentpay-readme-generator-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for generating professional README files for GitHub repos. Features include README generation, badge creation, validation, and templates.",
+  "main": "server.py",
+  "type": "module",
+  "bin": {
+    "readme-generator-mcp": "./server.py"
+  },
+  "scripts": {
+    "start": "python server.py",
+    "test": "python -c \"import server; print('Module loaded OK')\""
+  },
+  "keywords": [
+    "mcp",
+    "readme",
+    "generator",
+    "github",
+    "documentation",
+    "model-context-protocol",
+    "badge",
+    "template"
+  ],
+  "author": "Rumblingb",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rumblingb/agent-readme-generator-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rumblingb/agent-readme-generator-mcp/issues"
+  },
+  "homepage": "https://github.com/Rumblingb/agent-readme-generator-mcp#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "mcp": {
+    "inputs": [],
+    "outputs": []
+  }
+}
